@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Joshis Coffeeshop — tempat nyaman untuk menikmati kopi, bekerja, dan berkumpul." />
+  <title>Joshis Coffeeshop | A Little Coffee, A Lot of Comfort</title>
+  <style>
+    :root{--coffee:#4b2e24;--dark:#241812;--cream:#f8f2e9;--tan:#d9b894;--muted:#78665b;--white:#fffdf9}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:var(--dark);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .topbar{position:sticky;top:0;z-index:10;background:rgba(248,242,233,.94);backdrop-filter:blur(12px);border-bottom:1px solid #e9ded1}
+    nav{max-width:1120px;margin:auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-size:1.35rem;font-weight:bold;letter-spacing:.3px;color:var(--coffee)}
+    .brand span{color:#b17b50}
+    .navlinks{display:flex;gap:28px;font:500 .92rem Arial,sans-serif;color:#59483e}
+    .navlinks a:hover{color:#b17b50}
+    .menu-btn{display:none;border:0;background:none;font-size:1.5rem;color:var(--coffee);cursor:pointer}
+    .hero{max-width:1120px;margin:auto;padding:78px 24px 90px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:55px;min-height:590px}
+    .eyebrow{font:700 .75rem Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:#a36f49;margin-bottom:18px}
+    h1{font-size:clamp(3rem,6vw,5.3rem);line-height:1.04;letter-spacing:-2px;color:var(--coffee);margin-bottom:22px}
+    h1 em{font-weight:400;color:#b17b50}
+    .hero p{font:1.05rem/1.8 Arial,sans-serif;color:var(--muted);max-width:490px;margin-bottom:30px}
+    .actions{display:flex;gap:14px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:14px 23px;border-radius:5px;font:700 .9rem Arial,sans-serif;transition:.2s}
+    .btn-primary{background:var(--coffee);color:white}.btn-primary:hover{background:#694334;transform:translateY(-2px)}
+    .btn-outline{border:1px solid #b99c83;color:var(--coffee)}.btn-outline:hover{background:#efe3d5}
+    .hero-art{height:430px;position:relative;display:flex;align-items:center;justify-content:center}
+    .hero-art:before{content:"";position:absolute;width:350px;height:350px;border-radius:50%;background:#ead9c5;right:7%;top:7%}
+    .coffee-card{position:relative;width:min(350px,90%);height:390px;border-radius:180px 180px 14px 14px;background:linear-gradient(145deg,#8c5b3e,#3b241b);box-shadow:20px 25px 45px #4b2e242b;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .coffee-card:before{content:"";position:absolute;width:235px;height:235px;border:2px solid #d9b894;border-radius:50%;opacity:.5}
+    .cup{position:relative;width:155px;height:120px;background:#f8f2e9;border-radius:12px 12px 55px 55px;box-shadow:inset -12px -8px 0 #dfd0bf;display:flex;align-items:center;justify-content:center;transform:translateY(22px)}
+    .cup:after{content:"";position:absolute;width:48px;height:55px;border:12px solid #f8f2e9;border-left:0;border-radius:0 35px 35px 0;right:-39px;top:20px}
+    .coffee{width:112px;height:18px;border-radius:50%;background:#4b2e24;position:absolute;top:4px}
+    .cup-label{font:700 .72rem Arial,sans-serif;letter-spacing:2px;color:#8a5d40;margin-top:25px}
+    .art-caption{position:absolute;bottom:4px;right:0;background:var(--white);padding:13px 18px;border-radius:6px;box-shadow:0 8px 25px #24181218;font:italic 1rem Georgia;color:var(--coffee)}
+    section{padding:82px 24px}
+    .section-inner{max-width:1120px;margin:auto}
+    .section-head{text-align:center;max-width:620px;margin:0 auto 42px}
+    .section-head h2{font-size:clamp(2rem,4vw,3rem);color:var(--coffee);line-height:1.15;margin-bottom:12px}
+    .section-head p{font:1rem/1.7 Arial,sans-serif;color:var(--muted)}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .feature{background:var(--white);padding:30px 26px;border:1px solid #eee3d7;border-radius:8px}
+    .feature-icon{font-size:1.8rem;margin-bottom:15px}.feature h3{font-size:1.3rem;color:var(--coffee);margin-bottom:8px}.feature p{font: .93rem/1.7 Arial,sans-serif;color:var(--muted)}
+    .menu-section{background:#efe4d7}
+    .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .menu-item{background:var(--white);border-radius:8px;overflow:hidden}
+    .menu-visual{height:170px;display:flex;align-items:center;justify-content:center;font-size:4rem;background:linear-gradient(135deg,#dfc3a5,#b98762)}
+    .menu-item:nth-child(2) .menu-visual{background:linear-gradient(135deg,#d9d1b2,#9b9a70)}
+    .menu-item:nth-child(3) .menu-visual{background:linear-gradient(135deg,#e8c5ad,#b66d50)}
+    .menu-info{padding:20px}.menu-info h3{font-size:1.2rem;color:var(--coffee);margin-bottom:5px}.menu-info p{font: .9rem/1.6 Arial,sans-serif;color:var(--muted)}
+    .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:55px;align-items:center}
+    .about-visual{min-height:310px;border-radius:10px;background:linear-gradient(145deg,#6b4634,#2d1d16);display:flex;align-items:center;justify-content:center;color:#f6e9da;text-align:center;padding:30px}
+    .about-visual strong{display:block;font-size:2.4rem;line-height:1.1}.about-visual span{font: .8rem Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:#d9b894}
+    .about-copy h2{font-size:2.7rem;color:var(--coffee);line-height:1.15;margin-bottom:18px}.about-copy p{font:1rem/1.8 Arial,sans-serif;color:var(--muted);margin-bottom:14px}
+    .contact{background:var(--coffee);color:#fff8ef;text-align:center}.contact h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:12px}.contact p{font:1rem/1.7 Arial,sans-serif;color:#e3d0bf;max-width:570px;margin:0 auto 25px}.contact .btn{background:#f5e7d7;color:var(--coffee)}
+    footer{background:#241812;color:#cdb9a7;text-align:center;padding:22px;font: .85rem Arial,sans-serif}
+    @media(max-width:760px){.navlinks{display:none;position:absolute;top:62px;left:0;right:0;background:var(--cream);padding:20px 24px;flex-direction:column;gap:16px;border-bottom:1px solid #e9ded1}.navlinks.open{display:flex}.menu-btn{display:block}.hero{grid-template-columns:1fr;padding-top:55px;gap:25px}.hero-art{height:340px}.coffee-card{height:310px;width:280px}.hero-art:before{width:270px;height:270px}.features,.menu-grid{grid-template-columns:1fr}.about{grid-template-columns:1fr;gap:28px}.about-visual{min-height:230px}section{padding:65px 22px}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav>
+      <a class="brand" href="#home">Joshis <span>Coffeeshop</span></a>
+      <button class="menu-btn" aria-label="Buka menu" aria-expanded="false" onclick="toggleMenu()">☰</button>
+      <div class="navlinks" id="navlinks">
+        <a href="#home" onclick="closeMenu()">Beranda</a><a href="#menu" onclick="closeMenu()">Menu</a><a href="#about" onclick="closeMenu()">Tentang</a><a href="#contact" onclick="closeMenu()">Kontak</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <div class="eyebrow">Coffee • Comfort • Connection</div>
+        <h1>Temukan nyamanmu di <em>setiap tegukan.</em></h1>
+        <p>Selamat datang di Joshis Coffeeshop. Tempat sederhana untuk menikmati kopi favorit, menyelesaikan pekerjaan, atau berbagi cerita bersama orang tersayang.</p>
+        <div class="actions"><a class="btn btn-primary" href="#menu">Jelajahi Menu</a><a class="btn btn-outline" href="#about">Kenali Kami</a></div>
+      </div>
+      <div class="hero-art" aria-label="Ilustrasi secangkir kopi">
+        <div class="coffee-card"><div class="cup"><div class="coffee"></div><div class="cup-label">JOSHIS</div></div></div>
+        <div class="art-caption">Brewed with a little love ♡</div>
+      </div>
+    </section>
+    <section>
+      <div class="section-inner">
+        <div class="section-head"><div class="eyebrow">Why Joshis?</div><h2>Lebih dari sekadar tempat ngopi</h2><p>Suasana hangat dan pilihan kopi yang pas untuk menemani berbagai momen harianmu.</p></div>
+        <div class="features">
+          <article class="feature"><div class="feature-icon">☕</div><h3>Kopi Berkualitas</h3><p>Nikmati racikan kopi dengan rasa yang bersahabat untuk memulai hari atau melepas penat.</p></article>
+          <article class="feature"><div class="feature-icon">✦</div><h3>Suasana Nyaman</h3><p>Ruang santai untuk membaca, bekerja, belajar, atau sekadar menikmati waktu sendiri.</p></article>
+          <article class="feature"><div class="feature-icon">♡</div><h3>Momen Bersama</h3><p>Tempat yang cocok untuk bertemu teman, berbincang, dan menciptakan cerita baru.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="menu-section" id="menu">
+      <div class="section-inner">
+        <div class="section-head"><div class="eyebrow">Our Favorites</div><h2>Teman terbaik untuk harimu</h2><p>Beberapa pilihan favorit yang bisa kamu nikmati di Joshis Coffeeshop.</p></div>
+        <div class="menu-grid">
+          <article class="menu-item"><div class="menu-visual">☕</div><div class="menu-info"><h3>Classic Coffee</h3><p>Kopi klasik dengan karakter rasa yang kaya dan aroma yang menenangkan.</p></div></article>
+          <article class="menu-item"><div class="menu-visual">🍵</div><div class="menu-info"><h3>Matcha Latte</h3><p>Perpaduan matcha lembut dan susu yang creamy untuk teman bersantai.</p></div></article>
+          <article class="menu-item"><div class="menu-visual">🧋</div><div class="menu-info"><h3>Signature Latte</h3><p>Minuman creamy dengan sentuhan espresso untuk menemani aktivitasmu.</p></div></article>
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <div class="section-inner about">
+        <div class="about-visual"><div><span>Welcome to</span><strong>JOSHIS<br>COFFEESHOP</strong><span>your cozy corner</span></div></div>
+        <div class="about-copy"><div class="eyebrow">Our Story</div><h2>Ruang kecil untuk cerita yang besar.</h2><p>Joshis Coffeeshop hadir dengan ide sederhana: setiap orang pantas punya tempat untuk berhenti sejenak dan menikmati hal-hal kecil.</p><p>Datang untuk secangkir kopi, tinggal untuk suasananya. Kami tunggu kunjunganmu!</p></div>
+      </div>
+    </section>
+    <section class="contact" id="contact"><div class="section-inner"><div class="eyebrow" style="color:#d9b894">Come Say Hello</div><h2>Yuk, mampir ke Joshis!</h2><p>Siapkan waktu santaimu dan nikmati suasana hangat bersama secangkir kopi favorit.</p><a class="btn" href="mailto:hello@joshiscoffeeshop.com">Hubungi Kami</a></div></section>
+  </main>
+  <footer>© <span id="year"></span> Joshis Coffeeshop. Made with ☕ and love.</footer>
+  <script>
+    function toggleMenu(){const links=document.getElementById('navlinks');const btn=document.querySelector('.menu-btn');links.classList.toggle('open');btn.setAttribute('aria-expanded',links.classList.contains('open'));}
+    function closeMenu(){document.getElementById('navlinks').classList.remove('open');document.querySelector('.menu-btn').setAttribute('aria-expanded','false');}
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
